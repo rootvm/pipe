@@ -24,7 +24,7 @@ def call() {
     // this id will change if we change the credentials it's referencing
     withDockerRegistry([credentialsId: 'hubdocker']) {
         println("Building ${image_name}:${branch} at ${sha}")
-        def img = docker.build("${image_sha_tag}", "--label com.rootvm.commit=${sha} --label com.rootvm.build=${env.BUILD_NUMBER} .")
+        def img = docker.build("${image_sha_tag}" .")
 
         println("Pushing ${image_sha_tag}")
         img.push()
